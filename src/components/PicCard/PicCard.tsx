@@ -23,7 +23,7 @@ export const PicCard: React.FC<PicCardProps> = React.memo(
     };
 
     return (
-      <div className="pic-card__container">
+      <li className="pic-card__container">
         <button
           className="pic-card__pic-container"
           onClick={isSaved ? handleUnsavePic : handleSavePic}
@@ -64,7 +64,7 @@ export const PicCard: React.FC<PicCardProps> = React.memo(
             <img src={Star} alt="Favorites" className="text-icon" />
           </div>
         </div>
-      </div>
+      </li>
     );
   }
 );
