@@ -20,7 +20,7 @@ const App: React.FC = () => {
   const [lastSearchedCategory, setLastSearchedCategory] = useState<string>();
   const [page, setPage] = useState<number>(1);
 
-  const resultsRef = useRef<HTMLUListElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const addSavedPic = (picToSave: PixabayHit) => {
     setSavedPics([...(savedPics ?? []), picToSave]);
@@ -85,7 +85,7 @@ const App: React.FC = () => {
   return (
     <div className="main">
       <SearchForm onSubmit={handleNewSearch} />
-      <div className="main__results">
+      <div className="main__results" ref={resultsRef}>
         <ul ref={infiniteScrollRef}>
           {hits.map((hit) => (
             <PicCard
