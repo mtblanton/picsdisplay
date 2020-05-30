@@ -1,6 +1,7 @@
 import exampleRequest from './examplerequest.json';
 
 export const getPictures = async (
+  page: number,
   keyword?: string,
   category?: string
 ): Promise<PixabayResponse> => {
@@ -11,6 +12,7 @@ export const getPictures = async (
   const queryParams = new URLSearchParams({
     safeSearch: 'true',
     key: process.env.REACT_APP_API_KEY,
+    page: page.toString(),
   });
 
   if (keyword) {
