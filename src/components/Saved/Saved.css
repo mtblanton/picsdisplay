@@ -1,0 +1,16 @@
+.saved__container {
+  grid-area: saved;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.saved__title {
+  margin-bottom: 1rem;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.saved__link {
+  display: flex;
+  align-items: center;
+  color: #4310bd;
+}

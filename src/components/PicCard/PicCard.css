@@ -1,0 +1,77 @@
+.pic-card__container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: min-content 1fr;
+  grid-column-gap: 1rem;
+  grid-template-areas:
+    'pic tags'
+    'pic social';
+  height: min-content;
+  margin-bottom: 5vh;
+}
+
+.pic-card__container:last-of-type {
+  margin-bottom: 0;
+}
+
+.pic-card__pic-container {
+  grid-area: pic;
+  position: relative;
+  background-color: transparent;
+  height: min-content;
+}
+
+.pic-card__pic {
+  grid-area: pic;
+  height: auto;
+  max-width: 100%;
+}
+
+.pic-card__save-button {
+  display: none;
+  background-color: #b84060;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  padding: 0.25em 0;
+}
+
+.pic-card__save-button--saved {
+  background-color: #e58631;
+}
+
+.pic-card__pic-container:hover > .pic-card__save-button {
+  display: block;
+}
+
+.pic-card__tags-container {
+  grid-area: tags;
+
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.pic-card__tag {
+  background-color: #01a48f;
+  color: white;
+  padding: 0 1ch;
+  height: min-content;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pic-card__social {
+  grid-area: social;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: min-content;
+  align-self: end;
+}
+
+.pic-card__count {
+  display: flex;
+  align-items: center;
+}
