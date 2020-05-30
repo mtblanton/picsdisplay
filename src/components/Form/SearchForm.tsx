@@ -22,7 +22,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
       <Form.Control
         type="text"
         placeholder="Keyword..."
-        onChange={(e) => setKeyword(e.target.value)}
+        onChange={(e) => setKeyword(e.target.value.trim())}
       />
       <Form.Control
         as="select"

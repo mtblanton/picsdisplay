@@ -2,6 +2,8 @@
   grid-area: saved;
   display: flex;
   flex-flow: column nowrap;
+  padding-left: 1rem;
+  border-left: 2px solid #f2f0f2;
 }
 .saved__title {
   margin-bottom: 1rem;

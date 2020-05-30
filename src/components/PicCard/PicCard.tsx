@@ -12,58 +12,59 @@ type PicCardProps = {
   isSaved?: boolean;
 };
 
-export const PicCard: React.FC<PicCardProps> = ({
-  hit,
-  onSavePic,
-  onUnsavePic,
-  isSaved,
-}) => {
-  const handleSavePic = () => {
-    onSavePic(hit);
-  };
+export const PicCard: React.FC<PicCardProps> = React.memo(
+  ({ hit, onSavePic, onUnsavePic, isSaved }) => {
+    const handleSavePic = () => {
+      onSavePic(hit);
+    };
 
-  const handleUnsavePic = () => {
-    onUnsavePic(hit.id);
-  };
+    const handleUnsavePic = () => {
+      onUnsavePic(hit.id);
+    };
 
-  return (
-    <div className="pic-card__container">
-      <button
-        className="pic-card__pic-container"
-        onClick={isSaved ? handleUnsavePic : handleSavePic}
-      >
-        <img src={hit.webformatURL} alt={hit.tags} className="pic-card__pic" />
-        <div
-          //  Would've used classnames here but I didn't want to install it for only one use
-          className={`pic-card__save-button ${
-            isSaved ? 'pic-card__save-button--saved' : ''
-          }`}
+    return (
+      <div className="pic-card__container">
+        <button
+          className="pic-card__pic-container"
+          onClick={isSaved ? handleUnsavePic : handleSavePic}
         >
-          {isSaved ? 'Saved' : 'Save'}
+          <img
+            src={hit.webformatURL}
+            alt={hit.tags}
+            className="pic-card__pic"
+          />
+          <div
+            //  Would've used classnames here but I didn't want to install it for only one use
+            className={`pic-card__save-button ${
+              isSaved ? 'pic-card__save-button--saved' : ''
+            }`}
+          >
+            {isSaved ? 'Saved' : 'Save'}
+          </div>
+        </button>
+        <div className="pic-card__tags-container">
+          {hit.tags.split(', ').map((tag) => {
+            const tagToDisplay = tag.trim();
+            return (
+              tagToDisplay.length > 0 && (
+                <div className="pic-card__tag" key={tag}>
+                  {tag}
+                </div>
+              )
+            );
+          })}
         </div>
-      </button>
-      <div className="pic-card__tags-container">
-        {hit.tags.split(', ').map((tag) => {
-          const tagToDisplay = tag.trim();
-          return (
-            tagToDisplay.length > 0 && (
-              <div className="pic-card__tag" key={tag}>
-                {tag}
-              </div>
-            )
-          );
-        })}
+        <div className="pic-card__social">
+          <div className="pic-card__count">
+            <span>{hit.likes}</span>
+            <img src={ThumbsUp} alt="Likes" className="text-icon" />
+          </div>
+          <div className="pic-card__count">
+            <span>{hit.favorites}</span>
+            <img src={Star} alt="Favorites" className="text-icon" />
+          </div>
+        </div>
       </div>
-      <div className="pic-card__social">
-        <div className="pic-card__count">
-          <span>{hit.likes}</span>{' '}
-          <img src={ThumbsUp} alt="Likes" className="text-icon" />
-        </div>
-        <div className="pic-card__count">
-          <span>{hit.favorites}</span>
-          <img src={Star} alt="Favorites" className="text-icon" />
-        </div>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+);

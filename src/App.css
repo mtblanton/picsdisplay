@@ -1,15 +1,15 @@
 .main {
   display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: 2fr 1fr;
+  grid-row-gap: 2rem;
+  grid-template-columns: 3fr minmax(6rem, 1fr);
   grid-template-rows: 11rem minmax(0, 1fr);
   grid-template-areas:
     'form    saved'
     'results saved';
-  width: 75vw;
   margin: auto;
-  padding: 1rem 0;
+  padding: 1rem;
   height: 100vh;
+  background-color: #fef9fe;
 }
 
 .main__results {
@@ -17,13 +17,14 @@
   overflow-y: auto;
   min-height: 0;
 
-  /* Trying to account for scrollbar making the layout feel cramped */
+  /* Have both margin and padding to keep the scroll bar from looking strange */
+  margin-right: 1rem;
   padding-right: 1rem;
 }
 
 .text-icon {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1.5em;
+  width: 1.5em;
   padding-left: 1ch;
   fill: currentColor;
 }
