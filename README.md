@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Setup
+
+To make actual API requests instead of getting `exampleresponse.json` every time, copy `.env.local.template` and rename it to `.env.local`. Replace `<YOUR_API_KEY_HERE>` with a Pixabay API key.
+
 ## Available Scripts
 
 In the project directory, you can run:
