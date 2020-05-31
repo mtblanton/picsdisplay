@@ -20,11 +20,13 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   return (
     <Form onSubmit={handleSubmit} className="search-form__form">
       <Form.Control
+        name="keyword"
         type="text"
         placeholder="Keyword..."
         onChange={(e) => setKeyword(e.target.value.trim())}
       />
       <Form.Control
+        name="category"
         as="select"
         onChange={(e) => setCategory(e.target.value)}
         defaultValue=""

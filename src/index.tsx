@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// This is mostly here so Cypress can intercept fetches, fetch has good support
+import 'whatwg-fetch';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
