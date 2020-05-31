@@ -15,7 +15,7 @@ const App: React.FC = () => {
   const [savedPics, setSavedPics] = useState<PixabayHit[]>();
   const [isLoading, setIsLoading] = useState(false);
 
-  // These would be a good candidate for redux/context if this needed to be expanded
+  // These would be a good candidate for moving to redux/context if this needed to be expanded
   const [lastSearchedKeyword, setLastSearchedKeyword] = useState<string>();
   const [lastSearchedCategory, setLastSearchedCategory] = useState<string>();
   const [page, setPage] = useState<number>(1);
@@ -30,9 +30,11 @@ const App: React.FC = () => {
     if (!savedPics) {
       return;
     }
+
     const newSavedPics = savedPics.filter(
       (savedPic) => savedPic.id !== idToRemove
     );
+
     setSavedPics(newSavedPics);
   };
 
@@ -59,6 +61,7 @@ const App: React.FC = () => {
     const nextPage = page + 1;
 
     setIsLoading(true);
+
     try {
       const response = await getPictures(
         nextPage,
@@ -74,6 +77,8 @@ const App: React.FC = () => {
     }
   };
 
+  // If moved to redux this and the results would be good candidates for being moved to another component
+  // Currently the props drilling was a little too troublesome to make it worth it
   const infiniteScrollRef = useInfiniteScroll<HTMLUListElement>({
     loading: isLoading,
     // 20 is default page size, would need to change 20 to variable if we make it changeable
@@ -82,6 +87,7 @@ const App: React.FC = () => {
     scrollContainer: 'parent',
     threshold: 500,
   });
+
   return (
     <div className="main">
       <SearchForm onSubmit={handleNewSearch} />
